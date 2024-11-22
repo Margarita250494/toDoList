@@ -20,7 +20,7 @@
   --doneTaskColor:#78CFB0;
   --backgroundCardColor:#1D1825;
   --borderRadius: 10px;
-  --inputColor:#15101C;
+  --inputColorBack:#15101C;
 
 
   min-height: 100vh;
@@ -64,6 +64,7 @@ header input {
   padding: 9px;
   border: 1px solid var(--taskColor);
   background-color: transparent;
+  color: var(--inputColor);
 }
 
 header button {
@@ -112,7 +113,7 @@ p {
   gap: 14px;
   padding: 23px;
   border-radius: var(--borderRadius);
-  background-color: var(--inputColor);
+  background-color: var(--inputColorBack);
   animation: fadeIn 0.5s ease-out; /* Apply the fade-in animation */
 }
 
