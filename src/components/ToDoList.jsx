@@ -2,13 +2,16 @@ import { ToDoCard } from "./ToDoCard";
 import PropTypes from "prop-types";
 
 
-export const ToDoList = ({todos}) => {
-    //const {todos} = props;
+export const ToDoList = (props) => {
+    const {todos, handleEditToDo, handleDeleteToDo, handleCheck} = props
     return (
         <ul className="main">
+            <h4>Tasks to do</h4>
             {todos.map((todo,todoIndex) => {
                 return(
-                    <ToDoCard key={todoIndex}>
+                    <ToDoCard {...props} key={todoIndex} index={todoIndex} handleEditToDo={handleEditToDo}
+                    handleDeleteToDo={handleDeleteToDo}
+                    handleCheck={handleCheck}>
                         <p>{todo}</p>
                     </ToDoCard>
                 )
@@ -18,5 +21,8 @@ export const ToDoList = ({todos}) => {
 };
 
 ToDoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.string).isRequired, // todos must be an array of strings
+    todos: PropTypes.arrayOf(PropTypes.string).isRequired,
+    handleEditToDo: PropTypes.func.isRequired,
+  handleDeleteToDo: PropTypes.func.isRequired,
+  handleCheck: PropTypes.func.isRequired,
   };
