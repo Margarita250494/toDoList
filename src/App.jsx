@@ -3,13 +3,13 @@ import { ToDoInput } from "./components/ToDoInput";
 import { ToDoList } from "./components/ToDoList";
 import { DoneList } from "./components/DoneList";
 
-const App = () => {
+export const App = () => {
   const [todos, setTodos] = useState([]);
   const [todoValue, setTodoValue] = useState("");
   const [done, setDone] = useState([]);
 
   function persistData(newList) {
-    localStorage.setItem("todos", JSON.stringify({ todos: newList }));
+    localStorage.setItem("todos", JSON.stringify(newList)); // Save as array
   }
 
   function handleAddTodos(newTodo) {
@@ -35,18 +35,27 @@ const App = () => {
   function handleCheck(index) {
     const taskToBeDone = todos[index];
     const updatedTodos = todos.filter((_, todoIndex) => todoIndex !== index);
+    persistData(updatedTodos); // Update storage after modification
     setTodos(updatedTodos);
     setDone((prevDone) => [...prevDone, taskToBeDone]); // Add to done list
   }
 
   useEffect(() => {
-    if (!localStorage) return;
-
-    let localTodos = localStorage.getItem("todos");
-    if (!localTodos) return;
-
-    localTodos = JSON.parse(localTodos).todos;
-    setTodos(localTodos);
+    try {
+      const localTodos = localStorage.getItem("todos");
+      if (localTodos) {
+        const parsedTodos = JSON.parse(localTodos);
+        if (Array.isArray(parsedTodos)) {
+          setTodos(parsedTodos); // Only set if it's an array
+        } else {
+          console.warn("Clearing invalid todos from localStorage");
+          localStorage.removeItem("todos"); // Clear invalid data
+        }
+      }
+    } catch (error) {
+      console.error("Error loading todos from localStorage:", error);
+      localStorage.removeItem("todos");
+    }
   }, []);
 
   return (
@@ -69,4 +78,4 @@ const App = () => {
   );
 };
 
-export { App };
+
