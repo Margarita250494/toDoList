@@ -46,10 +46,10 @@ export const App = () => {
       if (localTodos) {
         const parsedTodos = JSON.parse(localTodos);
         if (Array.isArray(parsedTodos)) {
-          setTodos(parsedTodos); // Only set if it's an array
+          setTodos(parsedTodos); 
         } else {
           console.warn("Clearing invalid todos from localStorage");
-          localStorage.removeItem("todos"); // Clear invalid data
+          localStorage.removeItem("todos"); 
         }
       }
     } catch (error) {
@@ -77,5 +77,3 @@ export const App = () => {
     </>
   );
 };
-
-

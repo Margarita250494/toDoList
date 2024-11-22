@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 export const ToDoList = (props) => {
   const { todos, handleEditToDo, handleDeleteToDo, handleCheck } = props;
-  // Ensure todos is always an array
+
   if (!Array.isArray(todos)) {
     console.error("Invalid todos prop:", todos);
-    return null; // Return nothing if todos is invalid
+    return null; 
   }
   return (
     <ul className="main">
