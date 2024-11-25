@@ -19,8 +19,11 @@
   --taskColor:#9E78CF;
   --doneTaskColor:#78CFB0;
   --backgroundCardColor:#1D1825;
-  --borderRadius: 10px;
   --inputColorBack:#15101C;
+
+  --borderRadius: 10px;
+  --gap: 16px;
+  
 
 
   min-height: 100vh;
@@ -28,7 +31,7 @@
   flex-direction: column;
   padding: 14px;
   background: var(--backgroundColor);
-  gap: 14px;
+  gap: var(--gap);
 
 }
 
@@ -51,8 +54,7 @@ header,
 .main {
   max-width: 800px;
   width: 100%;
-  /*margin: 0 auto;*/
-  gap: 14px;
+  gap: var(--gap);
   
 }
 
@@ -61,7 +63,7 @@ header input {
   flex: 1;
   outline: none;
   width: 100%;
-  padding: 9px;
+  padding: 11px;
   border: 1px solid var(--taskColor);
   background-color: transparent;
   color: var(--inputColor);
@@ -98,7 +100,7 @@ p {
 .main {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  
 }
 
 .main h4{
@@ -110,7 +112,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
+  gap: var(--gap);
   padding: 23px;
   border-radius: var(--borderRadius);
   background-color: var(--inputColorBack);
@@ -122,7 +124,7 @@ p {
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: var(--gap);
 }
 .todoItem .taskButtons button{
   border: none;
@@ -154,7 +156,7 @@ p {
 .actionsContainer {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--gap);
 }
 
 .actionsContainer button {
@@ -172,7 +174,7 @@ p {
   margin-top: 60px;
   display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: var(--gap);
 }
 .main_done h4{
   color: var(--headColor);
